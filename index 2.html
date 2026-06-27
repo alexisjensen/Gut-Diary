@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gut Diary</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Gut Diary</h1>
+      <p>Track meals, bloating, nausea, cramps, burping and bowel movements.</p>
+    </header>
+
+    <section class="card">
+      <h2>Add entry</h2>
+      <form id="entryForm">
+        <label>Date <input type="date" id="date" required /></label>
+        <label>Time <input type="time" id="time" required /></label>
+        <label>Food & drink <textarea id="food" placeholder="Toast, kiwi, matcha…"></textarea></label>
+
+        <div class="grid">
+          <label>Bloating 0–10 <input type="number" id="bloating" min="0" max="10" value="0" /></label>
+          <label>Nausea 0–10 <input type="number" id="nausea" min="0" max="10" value="0" /></label>
+          <label>Cramps/pain 0–10 <input type="number" id="cramps" min="0" max="10" value="0" /></label>
+          <label>Distension
+            <select id="distension">
+              <option value="None">None</option>
+              <option value="Mild">Mild</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Severe">Severe</option>
+            </select>
+          </label>
+        </div>
+
+        <label>Burping
+          <select id="burping">
+            <option value="None">None</option>
+            <option value="A little — helped">A little — helped</option>
+            <option value="A little — did not help">A little — did not help</option>
+            <option value="A lot — helped">A lot — helped</option>
+            <option value="A lot — did not help">A lot — did not help</option>
+          </select>
+        </label>
+
+        <fieldset>
+          <legend>Bowel movement</legend>
+          <label><input type="checkbox" id="hadBm" /> Had one</label>
+          <div class="grid">
+            <label>Size
+              <select id="bmSize">
+                <option value="">—</option>
+                <option>Small</option><option>Medium</option><option>Large</option>
+              </select>
+            </label>
+            <label>Consistency
+              <select id="bmConsistency">
+                <option value="">—</option>
+                <option>Hard</option><option>Formed</option><option>Soft pieces</option><option>Loose</option>
+              </select>
+            </label>
+            <label>Complete?
+              <select id="bmComplete">
+                <option value="">—</option>
+                <option>Yes</option><option>No</option><option>Unsure</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <label>Notes <textarea id="notes" placeholder="Peak symptoms, triggers, walking after meal, stress, sleep…"></textarea></label>
+        <button type="submit">Save entry</button>
+      </form>
+    </section>
+
+    <section class="actions">
+      <button id="exportCsv">Export CSV</button>
+      <button id="exportJson">Export JSON</button>
+      <button id="clearAll" class="danger">Clear all</button>
+    </section>
+
+    <section class="card">
+      <h2>Entries</h2>
+      <div id="entries"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
